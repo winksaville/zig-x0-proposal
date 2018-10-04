@@ -204,8 +204,8 @@ test "g_PackedStruct2U1" {
     assert(@ptrToInt(pg_PackedStruct2U1) != @ptrToInt(pg_PackedStruct2I1));
 
     assert(@byteOffsetOf(@typeOf(g_PackedStruct2U1), "f1_u1") == 0);
-    assert(@byteOffsetOf(@typeOf(g_PackedStruct2U1), "f1_u1") ==
-                @byteOffsetOf(@typeOf(g_PackedStruct2U1), "f2_u1"));
+    assert(@byteOffsetOf(@typeOf(g_PackedStruct2U1), "f2_u1") == 0);
+
     assert(@ptrToInt(&g_PackedStruct2U1.f1_u1) ==
                 @ptrToInt(&g_PackedStruct2U1.f2_u1));
 
@@ -229,10 +229,7 @@ test "g_PackedStruct2I1" {
     assert(@ptrToInt(pg_PackedStruct2U1) != @ptrToInt(pg_PackedStruct2I1));
 
     assert(@byteOffsetOf(@typeOf(g_PackedStruct2I1), "f1_i1") == 0);
-    assert(@byteOffsetOf(@typeOf(g_PackedStruct2I1), "f1_i1") ==
-                @byteOffsetOf(@typeOf(g_PackedStruct2I1), "f2_i1"));
-    assert(@ptrToInt(&g_PackedStruct2I1.f1_i1) ==
-                @ptrToInt(&g_PackedStruct2I1.f2_i1));
+    assert(@byteOffsetOf(@typeOf(g_PackedStruct2I1), "f2_i1") == 0);
 
     assert(@bitOffsetOf(@typeOf(g_PackedStruct2I1), "f1_i1") == 0);
     assert(@bitOffsetOf(@typeOf(g_PackedStruct2I1), "f2_i1") == 1);
@@ -272,12 +269,9 @@ test "g_PackedStruct4Fields" {
     assert(@typeOf(g_PackedStruct4Fields.f4).bit_count == 64);
 
     assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f1") == 0);
-    assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f1") ==
-                @byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f2"));
-    assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f2") ==
-                @byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f3"));
-    assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f3") ==
-                @byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f4"));
+    assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f2") == 0);
+    assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f3") == 0);
+    assert(@byteOffsetOf(@typeOf(g_PackedStruct4Fields), "f4") == 0);
 
     assert(@ptrToInt(&g_PackedStruct4Fields.f1) ==
                 @ptrToInt(&g_PackedStruct4Fields.f2));
