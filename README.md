@@ -16,6 +16,25 @@ Discussions about x0:
 * [#1568](https://github.com/ziglang/zig/issues/1568)
 * [#1593](https://github.com/ziglang/zig/issues/1593)
 
+## Version 2
+
+`x0`: Shall have a value of 0.
+
+`@sizeOf(x0)`: Shall be 0.
+
+`Address of var x0 or var s`: struct { f: x0 }: Shall be an indeterminate non-null value.
+
+`Fields in a struct or packed struct`: Shall have an address equal to address of its `struct + @byteOffsetOf(struct, "field")`.
+
+`x0 in a struct`: Has an indeterminate @byteOffsetOf and @bitOffsetOf.
+
+x0` in a `packed struct`: Shall have the `@byteOffsetOf` and `@bitOffsetOf` of the
+following non-zero length field. If there is no following non-zero length field, it shall have
+the `@byteOffsetOf` and `@bitOffsetOf` as if there was a `u1` field following.
+
+`x0` in a `extern struct`: Not allowed since an `x0` is not supported n a C struct.
+
+## Version 1
 
 `x0`: Shall have a value of 0.
 
